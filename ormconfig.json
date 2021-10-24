@@ -1,8 +1,0 @@
-{
-  "type": "sqlite",
-  "database": "database/database.db",
-  "entities": ["dist/**/*.entity.js"],
-  "synchronize": true,
-  "seeds": ["database/seeds/**/*.js"],
-  "factories": ["database/factories/**/*.js"]
-}

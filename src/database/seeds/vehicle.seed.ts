@@ -1,9 +1,11 @@
-import { Factory, Seeder } from 'typeorm-seeding';
+import { Seeder } from 'typeorm-seeding';
 import { Connection } from 'typeorm';
-import { Vehicle, VehicleType } from '../../src/vehicles/vehicle.entity';
+import { VehicleType, Vehicle } from '../../../dist/models/vehicles/vehicle.entity';
 
 export default class CreateVehicles implements Seeder {
-  public async run(factory: Factory, connection: Connection): Promise<any> {
+  public async run(_: any, connection: Connection): Promise<any> {
+    console.log(__filename);
+    console.log(__dirname);
 
     await connection
       .createQueryBuilder()
@@ -19,7 +21,7 @@ export default class CreateVehicles implements Seeder {
         },
         {
           marca: 'ford',
-          modelo: 'belina',
+          modelo: 'belina2',
           cor: 'marrom',
           ano: 1987,
           tipo_veiculo: VehicleType.CAR,
