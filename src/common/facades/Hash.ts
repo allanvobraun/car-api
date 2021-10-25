@@ -8,6 +8,6 @@ export default class Hash {
   }
 
   static compare(plainStr: string, hash: string) {
-    return bcrypt.compare(plainStr, hash);
+    return bcrypt.compareSync(plainStr, hash);
   }
 }
