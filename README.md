@@ -22,52 +22,139 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descrição
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Uma pequena api  de veículos com autenticação jwt feita com [Nest](https://github.com/nestjs/nest). 
 
-## Installation
+## Instalação
 
-```bash
-$ npm install
+```zsh
+git clone https://github.com/allanvobraun/car-api.git
+yarn install
 ```
 
-## Running the app
+## Rodando o app
 
-```bash
+```zsh
 # development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
+yarn run start:dev
 
 # production mode
-$ npm run start:prod
+yarn run build
+yarn run start:prod
 ```
 
-## Test
+---
+## Endpoints
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+### Login
+* Metodo: `POST`
+* endpoint: `/auth/login`
+* parametros:
+```json
+{
+	"email": "allanvobraun@gmail.com",
+	"password": "teste"
+}
 ```
 
-## Support
+* Resposta
+```json
+{
+	"access_token": "token jwt"
+}
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Profile
+* Metodo: `GET`
+* endpoint: `/profile`
+* header:
+```
+Authorization: Bearer "tokenjwt"
+```
 
-## Stay in touch
+* Resposta
+```json
+{
+    "id": 4,
+    "email": "allanvobraun@gmail.com",
+    "name": "allan"
+}
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### PegaToken
+* Metodo: `GET`
+* endpoint: `/pegaToken?candidato=hash`
+Onde o hash é igual o hash md5 do email do usuario
+* header:
+```
+Authorization: Bearer "tokenjwt"
+```
 
+* Resposta
+```json
+{
+    "token": "b660a6b1cf9bce36373b383b659ab8db"
+}
+```
+
+### PegaJson
+* Metodo: `GET`
+* endpoint: `/pegaJson?candidato=hash`
+Onde o hash será o um hash MD5 do primeiro nome do usuario (totalmente minúsculo e
+sem acentos) concatenado com ":" e o token retornado pelo request anterior.
+* header:
+```
+Authorization: Bearer "token"
+```
+
+* Resposta
+```json
+{
+    {
+        "marca": "ford",
+        "modelo": "belina",
+        "cor": "verde",
+        "ano": 1985,
+        "tipo_veiculo": "carro"
+    },
+    {
+        "marca": "ford",
+        "modelo": "belina2",
+        "cor": "marrom",
+        "ano": 1987,
+        "tipo_veiculo": "carro"
+    }
+}
+```
+
+### Vehicles
+Endpoint para teste sem autenticação
+* Metodo: `GET`
+* endpoint: `/vehicles`
+
+* Resposta
+```json
+{
+    {
+        "marca": "ford",
+        "modelo": "belina",
+        "cor": "verde",
+        "ano": 1985,
+        "tipo_veiculo": "carro"
+    },
+    {
+        "marca": "ford",
+        "modelo": "belina2",
+        "cor": "marrom",
+        "ano": 1987,
+        "tipo_veiculo": "carro"
+    }
+}
+```
+---
+## Demo online
+`http://car-api-challenge.herokuapp.com/vehicles`
 ## License
 
 Nest is [MIT licensed](LICENSE).
