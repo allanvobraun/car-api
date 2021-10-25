@@ -5,10 +5,6 @@ import { VehicleType, Vehicle } from '../../models/vehicles/vehicle.entity';
 export default class CreateVehicles implements Seeder {
   public async run(_: any, connection: Connection): Promise<any> {
     const a = connection.createQueryBuilder().select('*').from(Vehicle, 'vehicle').execute();
-    console.log("Oi");
-
-    console.log(await a);
-    console.log("Oi");
     
     await connection
       .createQueryBuilder()

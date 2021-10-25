@@ -32,10 +32,8 @@ export class AuthService {
     if (!user) {
       return false;
     }
-    
-    
+
     const secretToken = this.generateUserSecretToken(user);
-    console.log(`${user.name}:${secretToken}`);
     return Hash.compare(`${user.name}:${secretToken}`, hash, 'md5');
   }
 
