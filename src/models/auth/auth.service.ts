@@ -25,6 +25,20 @@ export class AuthService {
     return user && Hash.compare(user.email, hashed, 'md5');
   }
 
+  async validateUserSuperSecretToken(
+    user: User,
+    hash: string,
+  ): Promise<boolean> {
+    if (!user) {
+      return false;
+    }
+    
+    
+    const secretToken = this.generateUserSecretToken(user);
+    console.log(`${user.name}:${secretToken}`);
+    return Hash.compare(`${user.name}:${secretToken}`, hash, 'md5');
+  }
+
   async login(user: User) {
     const payload = { email: user.email, sub: user.id, name: user.name };
     return {
