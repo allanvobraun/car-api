@@ -1,6 +1,6 @@
 import { Seeder } from 'typeorm-seeding';
 import { Connection } from 'typeorm';
-import { User } from '../../../dist/models/users/user.entity';
+import { User } from '../../../src/models/users/user.entity';
 import Hash from '../../common/facades/Hash';
 
 export default class CreateUsers implements Seeder {

@@ -3,12 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { VehiclesModule } from './models/vehicles/vehicles.module';
-import * as typeormOptions from './orm.config';
-
+import { AuthModule } from './models/auth/auth.module';
+import { AuthService } from './models/auth/auth.service';
+import { UsersModule } from './models/users/users.module';
+import config = require("../ormconfig");
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeormOptions), VehiclesModule],
+  imports: [TypeOrmModule.forRoot(config), VehiclesModule, AuthModule, UsersModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthService],
 })
 export class AppModule {}

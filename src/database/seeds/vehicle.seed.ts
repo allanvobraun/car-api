@@ -1,12 +1,15 @@
 import { Seeder } from 'typeorm-seeding';
 import { Connection } from 'typeorm';
-import { VehicleType, Vehicle } from '../../../dist/models/vehicles/vehicle.entity';
+import { VehicleType, Vehicle } from '../../models/vehicles/vehicle.entity';
 
 export default class CreateVehicles implements Seeder {
   public async run(_: any, connection: Connection): Promise<any> {
-    console.log(__filename);
-    console.log(__dirname);
+    const a = connection.createQueryBuilder().select('*').from(Vehicle, 'vehicle').execute();
+    console.log("Oi");
 
+    console.log(await a);
+    console.log("Oi");
+    
     await connection
       .createQueryBuilder()
       .insert()

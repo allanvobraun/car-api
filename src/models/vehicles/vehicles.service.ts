@@ -14,7 +14,7 @@ export class VehiclesService {
     return this.vehiclesRepository.find();
   }
 
-  findOne(id: string): Promise<Vehicle> {
+  findOne(id: string): Promise<Vehicle | undefined> {
     return this.vehiclesRepository.findOne(id);
   }
 
