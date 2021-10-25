@@ -23,7 +23,7 @@
     "seed:run": "NODE_ENV=seed ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
-    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js" 
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -35,10 +35,12 @@
     "@nestjs/typeorm": "^8.0.2",
     "@types/bcrypt": "^5.0.0",
     "@types/faker": "^5.5.9",
+    "@types/md5": "^2.3.1",
     "@types/passport-jwt": "^3.0.6",
     "@types/passport-local": "^1.0.34",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.4.0",
+    "md5": "^2.3.0",
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
